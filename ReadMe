@@ -1,0 +1,16 @@
+# MVC-In-Memory-Repo
+Small asp.net mvc application intended for purely personal use, that can record personal exercise activity.
+This is a single page application which implements following functionalities:
+	• Show a list of exercise records currently in the system
+	• Allow the user to search existing records by exercise name
+	• Allow the user to enter new exercise records
+	• Popup Modal for create new exercise
+	• Search using ajax
+	• Data Store implemented using In-Memory Generic Repository using constructor dependency injection
+	• Client and Server Side Validations
+	• Paging for List
+Technology Used:
+	• C#, ASP.NET MVC
+	• HTML Razor Syntax , CSS, Bootstrap
+	• jQuery, Ajax
+	• Visual Studio 2015
