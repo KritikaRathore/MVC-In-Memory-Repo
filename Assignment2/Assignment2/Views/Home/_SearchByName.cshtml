@@ -1,0 +1,10 @@
+﻿@model IEnumerable<Assignment2.Models.Exercise> 
+@foreach (var ex in Model)
+            {
+    <tr class="rows">
+        <td>@{RowNo++;} @RowNo</td>
+        <td>@ex.ExerciseName</td>
+        <td>@ex.ExerciseDate.ToShortDateString()</td>
+        <td>@ex.DurationInMinutes</td>
+    </tr>
+            }

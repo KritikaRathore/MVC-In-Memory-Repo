@@ -1,0 +1,54 @@
+﻿@using PagedList.Mvc
+@model PagedList.IPagedList<Assignment2.Models.Exercise> 
+    @{
+        ViewBag.Title = "Exercise List";
+    }
+<link href="~/Content/PagedList.css" rel="stylesheet" /> 
+<script src="~/Scripts/ExerciseSearch.js"></script >
+<div id="startIndex">
+    <h2>@ViewBag.Title</h2>
+    <div class="active-cyan-3 active-cyan-4 mb-4">
+        <input id="myInput" class="form-control" type="text" placeholder="Search for Exercise names.." title="Type in a name" style="width:500px" aria-label="Search" onchange="SearchExercise()" />
+    </div>
+    <br />
+
+    <div>
+        <table class="table table-condensed table-bordered table-striped" id="myTable">
+            <thead class="black white-text">
+                <tr class="rows">
+                    <th>No.</th>
+                    <th scope="col">Exercise Name</th>
+                    <th scope="col">Exercise Date</th>
+                    <th scope="col">Duration in Minutes</th>
+                </tr>
+            </thead>
+            <tbody>
+                @{int RowNo = 0;}
+                @foreach (var ex in Model)
+            {
+                    <tr class="rows">
+                        <td>@{RowNo++;} @RowNo</td>
+                        <td>@ex.ExerciseName</td>
+                        <td>@ex.ExerciseDate.ToShortDateString()</td>
+                        <td>@ex.DurationInMinutes</td>
+                    </tr>
+                            }
+            </tbody>
+        </table>
+    </div>
+
+    <div id="pager">
+        <p>@RowNo of @Model.PageSize Records Page  @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount</p>
+        @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
+    </div>
+    <div>
+        <a href="javascript:void(0);" class="addNewExercise btn btn-primary btn-lg active" role="button">Add new Exercise</a>
+    </div>
+    <div id='myModal' class='modal'>
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div id='myModalContent'></div>
+            </div>
+        </div>
+    </div>
+</div>

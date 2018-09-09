@@ -1,0 +1,43 @@
+﻿@model Assignment2.Models.ExerciseViewModel
+@{
+    ViewBag.Title = "Add new exercise";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<script src="~/Scripts/ExerciseSearch.js"></script>
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h4 class="modal-title" id="myModalLabel">@ViewBag.Title</h4>
+    </div>
+    @using (Html.BeginForm("Create","Home",FormMethod.Post))
+    {
+        <div class="editor-label">
+            @Html.Label("Exercise Name")
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(m => m.ExerciseName)
+            @Html.ValidationMessageFor(m => m.ExerciseName)
+        </div>
+        <div class="editor-label">
+            @Html.Label("Exercise Date")
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(m => m.ExerciseDate)
+            @Html.ValidationMessageFor(m => m.ExerciseDate)
+        </div>
+        <div class="editor-label">
+            @Html.Label("Duration In Minutes")
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(m => m.DurationInMinutes)
+            @Html.ValidationMessageFor(m => m.DurationInMinutes)
+        </div>
+        <br />
+        <div style="float:left;padding:10px;">
+            <input type="button" class="addExercise btn btn-secondary btn-lg" value="VALIDATE"/>
+        </div>
+        <div style="float:left;padding:10px;">
+            <input id="Addbtn" class="btn btn-secondary btn-lg" type="submit" value="SAVE" disabled/>
+        </div>
+        <br /><br />
+        @ViewBag.MyMessage
+    }
